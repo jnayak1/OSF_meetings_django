@@ -17,7 +17,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class NodeSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Node
-		fields = ('id', 'title', 'contributors', 'description','keywords')
+		fields = ('id', 'title','meeting', 'contributors', 'description','keywords')
 
 
 class SubmissionEvalSerializer(serializers.ModelSerializer):
