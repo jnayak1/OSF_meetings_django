@@ -46,6 +46,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField()),
                 ('keywords', models.CharField(max_length=500)),
                 ('contributors', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='auth.Group')),
+                ('meeting', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Meeting')),
             ],
             options={
                 'ordering': ('created',),
