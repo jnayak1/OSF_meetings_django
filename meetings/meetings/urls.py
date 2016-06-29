@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^auth/', views.OsfAuthorizationUrl.as_view(), name='auth'),
     url(r'^login/', views.OsfAuthorizationCode.as_view(), name='login'),
     url(r'^admin/', admin.site.urls, name='admin'),
+    url(r'^authenticate/', views.AuthenticateUser.as_view(), name='authenticate'),
 ]

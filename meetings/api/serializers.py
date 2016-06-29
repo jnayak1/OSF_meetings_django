@@ -13,6 +13,13 @@ class GroupSerializer(ser.HyperlinkedModelSerializer):
         model = Group
         fields = ('id', 'name')
 
+class AuthenticationSerializer(ser.Serializer):
+    username = ser.CharField(required=True)
+    password = ser.CharField(required=True)
+
+    def validate(self, data):
+        return data
+
 class ConferenceSerializer(ser.ModelSerializer):
     title = ser.CharField(required=True)
     city = ser.CharField(required=True)
