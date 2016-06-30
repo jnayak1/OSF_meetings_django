@@ -1,10 +1,9 @@
 from django.contrib.auth.models import User, Group
 from api.models import Submission, Conference
 from api.serializers import UserSerializer, GroupSerializer
-#from rest_framework import generics, viewsets
+from rest_framework import generics, viewsets
 from api.serializers import SubmissionSerializer, ConferenceSerializer, AuthenticationSerializer
 
-from rest_framework import generics
 from rest_framework_json_api.parsers import JSONParser as JSONAPIParser
 import requests
 from requests_oauth2 import OAuth2

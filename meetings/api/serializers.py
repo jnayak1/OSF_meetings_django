@@ -22,21 +22,21 @@ class AuthenticationSerializer(ser.Serializer):
 
 class ConferenceSerializer(ser.ModelSerializer):
     title = ser.CharField(required=True)
-    city = ser.CharField(required=True)
-    state = ser.CharField(required=True)
+    city = ser.CharField()
+    state = ser.CharField()
     country = CountryField() #get country_dict working later
-    event_start = ser.DateTimeField(required=True)
-    event_end = ser.DateTimeField(required=True)
-    submission_start = ser.DateTimeField(required=True)
-    submission_end = ser.DateTimeField(required=True)
-    logo_url = ser.URLField(required=True)
-    description = ser.CharField(required=True)
-    site_url = ser.URLField(required=False)
+    eventStart = ser.DateTimeField(source='event_start', required=False)
+    eventEnd = ser.DateTimeField(source='event_end', required=False)
+    submissionStart = ser.DateTimeField(source='submission_start', required=False)
+    submissionEnd = ser.DateTimeField(source='submission_end', required=False)
+    logoUrl = ser.URLField(source='logo_url', allow_blank=True)
+    description = ser.CharField(allow_blank=True)
+    siteUrl = ser.URLField(source='site_url')
 
     # Later on add tags and sponsors back
     class Meta:
         model = Conference
-        fields = ('created', 'modified', 'id', 'title', 'site_url', 'city', 'state', 'country', 'event_start', 'event_end', 'submission_start', 'submission_end', 'logo_url', 'description')
+        fields = ('created', 'modified', 'id', 'title', 'siteUrl', 'city', 'state', 'country', 'eventStart', 'eventEnd', 'submissionStart', 'submissionEnd', 'logoUrl', 'description')
 
 class SubmissionSerializer(ser.HyperlinkedModelSerializer):
     conference = ser.PrimaryKeyRelatedField(queryset=Conference.objects.all())
